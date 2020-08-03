@@ -1,299 +1,276 @@
-// //LESSON 14
+//LESSON 29
 
-// const person = {
-// firstName: 'Steve',
-// lastName:'Smith',
-// age: 33,
-// email: 'steve@aol.com',
-// hobbies: ['music', 'sports'],
-// address: {
-//   city: 'Miami',
-//   state: 'FL'
-// },
-// getBirthYear: function(){
-//   return 2017 - this.age;
-// }
-// }
+
+
+
+// //LESSON 28
+// //REPLACE ELEMENT
+
+// //Create Element
+// const newHeading = document.createElement('h2');
+
+// newHeading.id = 'task-title';
+
+// newHeading.appendChild(document.createTextNode('Task List'));
+
+// const oldHeading = document.getElementById('task-title');
+// //parent
+// const cardAction = document.querySelector('.card-action');
+
+// cardAction.replaceChild(newHeading, oldHeading);
+// //console.log(newHeading);
+
+// //REMOVE ELEMENT
+
+// const lis = document.querySelectorAll('li');
+// const list = document.querySelector('ul');
+
+// lis[0].remove();
+
+// //Also can be done by remove child element
+
+// list.removeChild(lis[3]);
+
+// //classes and attributes
+
+// const firstli = document.querySelector('li:first-child');
+
+// const link = firstli.children[0];
 
 // let val;
-// val = person;
-// val = person.firstName;
-// val = person['lastName'];
-// val = person.age;
-// val = person.hobbies[1];
-// val = person.address.state;
-// val = person.address['city'];
 
-// val = person.getBirthYear();
+// //classes
+// val = link.className;
+// val = link.classList;
+// val = link.classList[0];
+// link.classList.add('test');
+// link.classList.remove('test');
+// val = link;
 
-// const people = [
-// {name:'John', age:30},
-// {name:'Mike', age:36},
-// {name:'Nancy', age:34},
-// ];
+// //attributes
 
-// for(let i=0; i<people.length; i++){
-//   console.log(people[i].name);
+// val = link.getAttribute('href');
+// val = link.setAttribute('href', 'http://google.com');
+// link.setAttribute('title','Google');
+// val = link.hasAttribute('title');
+// //val = link.hasAttribute('href');
+// link.removeAttribute('title');
+// val = link;
+// console.log(val);
+
+// //LESSON 27
+
+// //create element
+// const li = document.createElement('li');
+
+// // add class
+// li.className = 'collection-item';
+
+// // add id
+
+// li.id = 'new-item';
+
+// //Add attribute
+// li.setAttribute('title', 'New-Item');
+
+// //create text node and append
+
+// li.appendChild(document.createTextNode('Hello World'));
+
+// //create new link element
+// const link = document.createElement('a');
+
+// //add classes
+// link.className = 'delete-item secondary-content';
+
+// // add icon html
+// link.innerHTML = '<i class="fa fa-remove"></i>';
+
+// //append link into li
+// li.appendChild(link);
+
+// //append li as child to ul
+
+// document.querySelector('ul.collection').appendChild(li);
+
+// console.log(li);
+// //LESSON 26
+// let val;
+
+// const list = document.querySelector('ul.collection');
+// const listItem = document.querySelector('li.collection-item:first-child');
+// val = listItem;
+// val = list;
+// //Get child Nodes ===> Nodelist
+// val = list.childNodes;
+// val = list.childNodes[0];
+// val = list.childNodes[0].nodeName;
+// val = list.childNodes[1].nodeType;
+
+// // 1 - Element
+// // 2 - Attribute (deprecated)
+// // 3 - Text node
+// // 8 - Comment
+// // 9 - Document itself
+// // 10 - Doctype
+
+// // Get children element nodes ===> HTML Collection
+// val = list.children;
+// val = list.children[1];
+// list.children[1].textContent = 'Hello';
+// //Children of Children
+// val = list.children[3].children[0].id = 'test-link';
+// val = list.children[3].children[0];
+// //First child
+// val = list.firstChild;
+// val = list.firstElementChild;
+// //Last child
+// val = list.lastChild;
+// val = list.lastElementChild;
+// //Count child Elements
+// val = list.childElementCount;
+// // Get Parent node
+// val = listItem.parentNode;
+// val = listItem.parentElement;
+// val = listItem.parentElement.parentElement;
+
+// //Get next siblings
+
+// val = listItem.nextSibling;
+// val = listItem.nextElementSibling;
+// val = listItem.nextElementSibling.nextElementSibling;
+// val = listItem.nextElementSibling.nextElementSibling.previousElementSibling;
+
+// //Get previous siblings
+
+// // val = listItem.previousSibling;
+// // val = listItem.previousElementSibling;
+
+// console.log(val);
+
+// //LESSON 25
+// // document.querySelectorAll
+
+// const items = document.querySelectorAll('ul.collection li.collection-item');
+// items.forEach(function(item, index){    
+//     item.textContent = `${index}: Hello`;
+//   });
+
+// const liOdd = document.querySelectorAll('li:nth-child(odd)');
+// const liEven = document.querySelectorAll('li:nth-child(even)');
+
+// liOdd.forEach(function(li, index){    
+//     li.style.background = '#ccc';
+//  });
+
+// //for array and collection, as length works on collections
+// for(let i = 0; i < liEven.length; i++){
+//   liEven[i].style.background = '#f4f4f4';
 // }
 
-// //console.log(val);
+// console.log(items);
 
-// //LESSON 13
-// const numbers = [43,56,33,23,44,36,5];
-// const numbers2 = new Array(22,45,33,76,54);
-// const fruit = ['Apple','Banana','Orange','Pear'];
-// const mixed = [22, 'Hello', true, undefined, null, {a:1, b:2}, new Date()];
-// let val;
-// val = numbers.length;
-// val = Array.isArray(numbers);
-// val = numbers[0];
-// numbers[2] = 110;
-// val = numbers.indexOf(36);
-// numbers.push(250);
-// //Add to front
-// numbers.unshift(120);
-// numbers.pop();
-// //Remove from front
-// numbers.shift();
-// numbers.splice(1,3);
-// numbers.reverse();
-// val = numbers.concat(numbers2);
-// val = fruit.sort();
-// val = numbers.sort();
+// const items = document.getElementsByClassName('collection-item');
+// console.log(items);
+// console.log(items[0]);
+// items[0].style.color = 'red';
+// items[3].textContent = 'Hello';
 
-// val = numbers.sort(function(x,y){
-// return x - y;
+// const listItems = document.querySelector('ul').getElementsByClassName('collection-item');
+//any actually all div and lists
+
+//console.log(listItems);
+
+// let lis = document.getElementsByTagName('li');
+//  console.log(lis);
+// console.log(lis[0]);
+// lis[0].style.color = 'red';
+// lis[3].textContent = 'Hello';
+
+// //lis.reverse(); //error
+// //convert HTML collection to an array
+//  lis = Array.from(lis);
+//  lis.reverse(); //error
+
+// lis.forEach(function(li, index){
+//   console.log(li.className)
+//   li.textContent = `${index}: Hello`;
+// });
+// console.log(lis);
+
+// //LESSON 24
+
+//  console.log(document.querySelector('#task-title'));
+//  console.log(document.querySelector('.card-title'));
+//  console.log(document.querySelector('h5')); //first one
+
+//  document.querySelector('li').style.color = 'red';
+// document.querySelector('ul li').style.color = 'blue';
+//  document.querySelector('li:last-child').style.color = 'red';
+//  document.querySelector('li:nth-child(3)').style.color = 'yellow';
+//  document.querySelector('li:nth-child(4)').textContent = 'Hello World';
+//  document.querySelector('li:nth-child(odd)').style.background = '#ccc';
+//  document.querySelector('li:nth-child(even)').style.background = '#f4f4f4';
+
+// // console.log(document.getElementById('task-title'));
+
+// // console.log(document.getElementById('task-title').id);
+// // console.log(document.getElementById('task-title').className);
+
+// // document.getElementById('task-title').style.background = '#333';
+// // document.getElementById('task-title').style.color = '#fff';
+// // document.getElementById('task-title').style.padding = '5px';
+// // //document.getElementById('task-title').style.display = 'none';
+
+// // document.getElementById('task-title').textContent = 'Task List';
+// // document.getElementById('task-title').innerText = 'My Tasks';
+// //  document.getElementById('task-title').innerHTML = '<span style="color:red">Task List</span>';
+
+// //  const taskTitle = document.getElementById('task-title');
+// //  taskTitle.innerHTML = '<span style="color:blue">Task List</span>';
+
+// //LESSON 23 (DOM begins)
+
+//  let val;
+//  val = document;
+//  val = document.all;
+//  val = document.all[2];
+//  val = document.all.length;
+//  val = document.head;
+//  val = document.body;
+//  val = document.doctype;
+//  val = document.domain;
+//  val = document.URL;
+//  val = document.characterSet;
+//  val = document.contentType;
+
+//  val = document.forms;
+//  val = document.forms[0];
+//  val = document.forms[0].id;
+//  val = document.forms[0].method;
+//  val = document.forms[0].action;
+//  val = document.forms[0];
+//  val = document.links;
+//  val = document.links[0];
+//  val = document.links[0].id;
+//  val = document.links[0].className;
+//  val = document.links[0].classList[0];
+//  val = document.images;
+//  val = document.scripts;
+//  val = document.scripts[2].getAttribute('src');
+
+// //RIGHT METHOD/WAY
+// let scripts = document.scripts;
+// let scriptsArr = Array.from(scripts);
+
+// scriptsArr.forEach(function(script){
+// console.log(script.getAttribute('src'));
 // });
 
-// val = numbers.sort(function(x,y){
-//   return y - x;
-//   });
-// function under50(num){
-//   return num < 50;
-// }
+// //WRONG METHOD/WAY
+// //  let scripts = document.scripts;
+// //  scripts.forEach(function(script){
+// //  console.log(script);
+// //  });
 
-// val = numbers.find(under50);
-
-// function over50(num){
-//   return num > 50;
-// }
-
-// val = numbers.find(over50);
-
-// console.log(numbers);
-// console. log(val);
-
-
-// //LESSON 12
-
-// const name = 'John';
-// const age = '31';
-// const job = 'Web Developer';
-// const city = 'Miami';
-// let html;
-
-// // html = '<ul><li>Name: '+name+'</li><li>Age: '+age+'</li><li>Job: '+job+'</li><li>City: '+city+'</li></ul>';
-
-// // html = '<ul>'+
-// // '<li>Name: '+name+'</li>'+
-// // '<li>Age: '+age+'</li>'+
-// // '<li>Job: '+job+'</li>'+
-// // '<li>City: '+city+'</li>'+
-// // '</ul>';
-
-// function hello() {
-//   return 'hello';
-// }
-
-// html = `<ul>
-// <li>Name: ${name}</li>
-// <li>Age: ${age}</li>
-// <li>Job: ${job}</li>
-// <li>${2+2}</li>
-// <li>${hello()}</li>
-// <li>${age > 30 ? 'Over 30' : 'Under 30'}</li>
-// </ul>`;
-// document.body.innerHTML = html;
-
-
-// //LESSON 11
-// const firstName = 'William';
-// const lastName = 'Johnson';
-// const age = 36;
-// const str = 'Hello there my name is mon';
-// const tags = 'web design, web development, programming';
-
-// let val;
-
-// val = firstName + lastName;
-// val = firstName + ' ' + lastName;
-// val = 'Brad ';
-// val += 'Traversy';
-// val = 'Hello, my name is '+ firstName + 'and Iam ' + age + 'years old';
-// val = 'That\'s awesome, I can\'t wait';
-// val = "That's awesome, I can't wait!!";
-// val = firstName.length;
-// val = firstName.concat(' ',lastName);
-// val = firstName.toUpperCase();
-// val = firstName.toLowerCase();
-// val = firstName[1];
-// val = firstName.indexOf('a');
-// val = firstName.lastIndexOf('m'); //??????
-// val = firstName.charAt('4');
-// val = firstName.charAt(firstName.length - 1);
-// val = firstName.substring(0,4);
-// val = firstName.slice(0,4);
-// val = firstName.slice(-3);
-// val = str.split(' ');
-// val = tags.split(',');
-// val = str.replace('mon', 'sam');
-
-// val = str.includes('foo');
-
-// console.log(str);
-// console.log(val);
-
-// //LESSON 10
-
-// const num1 = 100;
-// const num2 = 50;
-// let val;
-
-// val = Math.PI;
-// val = Math.E;
-// val = Math.round(2.4);
-// val = Math.ceil(2.4);
-// val = Math.floor(2.8);
-// val = Math.sqrt(64);
-// val = Math.abs(-3);
-// val = Math.min(2,34,56,7899,3,4,-5);
-// val = Math.max(2,34,56,7899,3,4,-5);
-// val = Math.random();
-// val = Math.floor(Math.random()*20 + 1);
-
-// console.log(val);
-
-// //LESSON 9
-// let  val;
-
-// val = String(555);
-// val = String(4+4);
-// val = String(true);
-// val = String(new Date());
-// val = String([1,2,3,4]);
-
-// val = (5).toString();
-// val = (true).toString();
-
-// val = Number('5');
-// val = Number(true);
-// val = Number(false);
-// val = Number(null);
-// val = Number('hello');
-// val = Number([1,2,3]);
-
-// val = parseInt('100.67');
-// val = parseFloat('100.67');
-
-// // console.log(val);
-// // console.log(typeof val);
-// // console.log(val.toFixed(2));
-// //console.log(val.length);
-
-// const val1 = String(6);
-// const val2 = 8;
-// const sum = Number(val1 + val2);
-
-// console.log(sum);
-// console.log(typeof sum);
-
-//LESSON 8
-
-// const name ="John Doe";
-// const age = 45;
-// const hasKids = true;
-// const car = null;
-// let test;
-// const sym = Symbol();
-
-// const hobbies = ['movies', 'music'];
-// const address = {
-//   city: 'Boston',
-//   state: 'MA'
-// }
-// const today = new Date();
-// console.log(today);
-// console.log(typeof today);
-
-
-//LESSON 7
-
-//var, let, const
-
-// var name = 'John Doe';
-// console.log(name);
-
-// name = 'Steve Smith';
-// console.log(name);
-
-// var greeting;
-// console.log(greeting);
-// greeting= 'Hello';
-// console.log(greeting);
-
-// var firstName = 'John';
-// var first_name = 'Sara';
-// var FirstName = 'Tom';   //oop
-
-// let name = 'John Doe';
-// console.log(name);
-
-// name = 'Steve Smith';
-// console.log(name);
-
-//CONST
-
-// const name = 'John';
-// console.log(name);
-
-//name = 'Sara';
-//const greeting;
-
-// const person = {
-//   name: 'John',
-//   age: 30
-// }
-
-// person.name = 'Sara';
-// console.log(person);
-
-// const numbers = [1,2,3,4,5];
-// numbers.push(7);
-// console.log(numbers);
-
-/*
-//LESSON 6
-alert('Hello World');
-
-console.log('Hello World');
-console.log(123);
-console.log(true);
-var greeting = 'Hello';
-console.log(greeting);
-console.log([1,2,3,4]);
-console.log({a:1,b:2});
-console.table({a:4,b:2});
-
-console.error('This is some error');
-console.clear();
-console.warn('This is a warning');
-console.time('Hello');
-console.log('Hello World');
-console.log('Hello World');
-console.log('Hello World');
-console.log('Hello World');
-console.log('Hello World');
-console.log('Hello World');
-console.log('Hello World');
-console.timeEnd('Hello');
-*/
+//  console.log(val);
