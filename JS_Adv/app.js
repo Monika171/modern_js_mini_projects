@@ -1,4 +1,118 @@
-//LESSON 31
+//LESSON 33 setlocal storage item
+
+// localStorage.setItem('name','John');
+// localStorage.setItem('age','30');
+
+// sessionStorage.setItem('name','Beth');
+
+// remove from Storage
+// localStorage.removeItem('name');
+
+// get from Storage
+
+// const name = localStorage.getItem('name');
+// const age = localStorage.getItem('age');
+// console.log(name, age);
+
+// localStorage.clear();
+
+document.querySelector('form').addEventListener('submit', function(e){
+
+  const task = document.getElementById('task').value;
+
+  let tasks;
+
+  if(localStorage.getItem('tasks') === null){
+    tasks = [];
+  }else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+
+  tasks.push(task);
+
+  // console.log(task);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  alert('Task saved');
+  e.preventDefault();
+});
+
+const tasks = JSON.parse(localStorage.getItem('tasks'));
+
+tasks.forEach(function(task){
+  console.log(task);
+});
+
+
+//LESSON 32 Event Bubbling
+
+// document.querySelector('.card-title').addEventListener('click',
+// function(){
+// console.log('card title');
+// });
+
+// document.querySelector('.card-content').addEventListener('click',
+// function(){
+// console.log('card content');
+// });
+
+// document.querySelector('.card').addEventListener('click',
+// function(){
+// console.log('card');
+// });
+
+// document.querySelector('.col').addEventListener('click',
+// function(){
+// console.log('col');
+// });
+
+//EVENT DELEGATION
+
+// const delItem = document.querySelector('.delete-item');
+
+// delItem.addEventListener('click', deleteItem);
+
+// document.body.addEventListener('click', deleteItem);
+
+// function deleteItem(e){
+//   // console.log('delete Item');
+//   // console.log(e.target);
+//   // if(e.target.parentElement.className === 'delete-item secondary-content'){    
+//   //   console.log('delete Item');
+//   // }
+
+//   if(e.target.parentElement.classList.contains('delete-item')){    
+//     console.log('delete Item');
+//     e.target.parentElement.parentElement.remove();
+//   }
+// }
+
+// //LESSON 31
+
+// const form = document.querySelector('form');
+// const taskInput = document.getElementById('task');
+// const heading = document.querySelector('h5');
+// const select = document.querySelector('select');
+
+// taskInput.value = '';
+// // form.addEventListener('submit', runEvent);
+
+// // taskInput.addEventListener('keydown', runEvent);
+// // taskInput.addEventListener('keyup', runEvent);
+// // taskInput.addEventListener('keypress', runEvent);
+// // taskInput.addEventListener('focus', runEvent);
+// // taskInput.addEventListener('blur', runEvent);
+// // taskInput.addEventListener('cut', runEvent);
+// // taskInput.addEventListener('paste', runEvent);
+
+// // taskInput.addEventListener('input', runEvent);
+// select.addEventListener('change', runEvent);
+// function runEvent(e) {
+// console.log(`EVENT TYPE: ${e.type}`);
+// console.log(e.target.value);
+// //heading.innerText = e.target.value;
+// // console.log(taskInput.value);
+// // e.preventDefault();
+// }
 
 // //LESSON 30
 // //console.log('aaaaaa');
@@ -17,8 +131,6 @@
 // // card.addEventListener('mouseover', runEvent);
 // // card.addEventListener('mouseout', runEvent);
 // card.addEventListener('mousemove', runEvent);
-
-
 
 // //event handler
 
