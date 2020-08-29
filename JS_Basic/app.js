@@ -422,6 +422,8 @@
 // numbers.pop();
 // //Remove from front
 // numbers.shift();
+//splice (where to start, how many value)
+// numbers.splice(1,1); //start at 1 and 1value
 // numbers.splice(1,3);
 // numbers.reverse();
 // val = numbers.concat(numbers2);
