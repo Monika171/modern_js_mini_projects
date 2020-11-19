@@ -1,0 +1,2 @@
+AJAX isnt a language or framework or library
+its a set of web technologies to send and receive data from a client server and it does that asynchronously
