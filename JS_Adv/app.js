@@ -1,4 +1,117 @@
-// Lesson 67 The FetchAPI
+// Lesson 69 Arrow Functions
+// const sayHello = () => {
+//   console.log('Hello');
+// }
+
+// One line function does not need braces
+// const sayHello = () => console.log('Hello');
+// sayHello();
+
+// one line returns
+// const sayHello = () => 'Hello';
+
+// Problem when object literal, use brackets
+// const sayHello = () => ({msg: 'Hello'});
+// console.log(sayHello());
+
+// For parameters
+
+// single paameter doesnt need paranthesis
+// const sayHello = name => console.log(`Hello ${name}`);
+
+// const sayHello = (name) => console.log(`Hello ${name}`)
+
+// more than one parameter need brackets
+
+// const sayHello = (firstname, lastname) => console.log(`Hello ${firstname} ${lastname}`)
+
+// sayHello('Brad', 'Traversy');
+
+// Arrow Functions as Callbacks
+
+// const users = ['Nathan', 'John', 'William'];
+
+// normal
+// const namelengths = users.map(function(name) {
+//   return name.length;
+// });
+
+// Shorter
+// const namelengths = users.map((name) => {
+//   return name.length;
+// });
+
+// Shortest
+// const namelengths = users.map(name => name.length);
+
+
+// using arrow functions
+// console.log(namelengths);
+
+///////////////////////////////////////////
+
+/// FETCH EXAMPLE USING ARROW FUNCTIONS ///
+
+///////////////////////////////////////////
+
+document.getElementById('button1').addEventListener('click', getText);
+
+document.getElementById('button2').addEventListener('click', getJson);
+
+document.getElementById('button3').addEventListener('click', getExternal);
+
+// Get from exxternal API
+
+function getExternal() {
+  fetch('https://api.github.com/users')
+  .then(res => res.json())
+  .then(data => {
+    console.log(data); //in the file
+    let output = '';
+    data.forEach(function(user){
+      output += `<li>${user.login}</li>`;
+    });
+
+    document.getElementById('output').innerHTML = output;
+  })
+  .catch(err => console.log(err));
+
+}
+
+
+// Get local json data
+
+function getJson() {
+  fetch('posts.json')
+  .then(res => res.json())
+  .then(data => {
+    console.log(data); //in the file
+    let output = '';
+    data.forEach(function(post){
+      output += `<li>${post.title}</li>`;
+    });
+
+    document.getElementById('output').innerHTML = output;
+  })
+  .catch(err => console.log(err));
+
+}
+
+// Get local text file data
+
+function getText() {
+  fetch('text.txt')
+  .then(res => res.text()) //the file
+  .then(data => {
+    console.log(data); //in the file
+    document.getElementById('output').innerHTML = data;
+  })
+  .catch(err => console.log(err));
+
+}
+
+
+
 
 
 
