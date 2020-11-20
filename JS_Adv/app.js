@@ -1,40 +1,170 @@
-// Lesson 50 Callback Functions
+// Lesson 67 The FetchAPI
+
+
+
+// Lesson 67 The FetchAPI
+
+// document.getElementById('button1').addEventListener('click', getText);
+
+// document.getElementById('button2').addEventListener('click', getJson);
+
+// document.getElementById('button3').addEventListener('click', getExternal);
+
+// // Get from exxternal API
+
+// function getExternal() {
+//   fetch('https://api.github.com/users')
+//   .then(function(res) {
+//     return(res.json()); //the file
+//   })
+//   .then(function(data){
+//     console.log(data); //in the file
+//     let output = '';
+//     data.forEach(function(user){
+//       output += `<li>${user.login}</li>`;
+//     });
+
+//     document.getElementById('output').innerHTML = output;
+//   })
+//   .catch(function(err){
+//     console.log(err);
+//   });
+
+// }
+
+
+// // Get local json data
+
+// function getJson() {
+//   fetch('posts.json')
+//   .then(function(res) {
+//     return(res.json()); //the file
+//   })
+//   .then(function(data){
+//     console.log(data); //in the file
+//     let output = '';
+//     data.forEach(function(post){
+//       output += `<li>${post.title}</li>`;
+//     });
+
+//     document.getElementById('output').innerHTML = output;
+//   })
+//   .catch(function(err){
+//     console.log(err);
+//   });
+
+// }
+
+// // Get local text file data
+
+// function getText() {
+//   fetch('text.txt')
+//   .then(function(res) {
+//     return(res.text()); //the file
+//   })
+//   .then(function(data){
+//     console.log(data); //in the file
+//     document.getElementById('output').innerHTML = data;
+//   })
+//   .catch(function(err){
+//     console.log(err);
+//   });
+
+// }
+
+
+// Lesson 66 ES6 Promises
+
+// const posts = [
+//   {
+//     title: "Post One",
+//     body: 'This is post one'
+//   },
+//   {
+//     title: "Post Two",
+//     body: 'This is post two'
+//   }
+// ];
+
+// // Asynchronous
+// function createPost(post) {
+
+//   // create promise and for errors 'reject'
+//   return new Promise(function(resolve, reject){
+//     setTimeout(function(){
+//       posts.push(post);
+
+//       const error = false;
+//       if(!error) {
+//         resolve();
+//       } else {
+//         reject('Error: Something went wrong');
+//       }
+      
+//     }, 2000);
+  
+
+//   });  
+// }
+
+// function getPosts() {
+// setTimeout(function(){
+//   let output = '';
+//   posts.forEach(function(post){
+//     output += `<li>${post.title}</li>`;
+//   });
+//   document.body.innerHTML = output;
+// }, 1000)
+// }
+
+// // when we get a promise reponse, we handle it with .then
+// createPost({
+//   title: "Post Three",
+//   body: 'This is post three'
+// })
+// .then(getPosts)
+// .catch(function(err){
+//   console.log(err);
+// });
+
+
+// Lesson 63 Callback Functions
 
 // to mimic our server and database
-const posts = [
-  {
-    title: "Post One",
-    body: 'This is post one'
-  },
-  {
-    title: "Post Two",
-    body: 'This is post two'
-  }
-];
+// const posts = [
+//   {
+//     title: "Post One",
+//     body: 'This is post one'
+//   },
+//   {
+//     title: "Post Two",
+//     body: 'This is post two'
+//   }
+// ];
 
-// Asynchronous // pass in callback
-function createPost(post, callback) {
-  setTimeout(function(){
-    posts.push(post);
-    callback();
-  }, 2000);
+// // Asynchronous // pass in callback
+// function createPost(post, callback) {
+//   setTimeout(function(){
+//     posts.push(post);
+//     callback();
+//   }, 2000);
 
-}
+// }
 
-function getPosts() {
-setTimeout(function(){
-  let output = '';
-  posts.forEach(function(post){
-    output += `<li>${post.title}</li>`;
-  });
-  document.body.innerHTML = output;
-}, 1000)
-}
+// function getPosts() {
+// setTimeout(function(){
+//   let output = '';
+//   posts.forEach(function(post){
+//     output += `<li>${post.title}</li>`;
+//   });
+//   document.body.innerHTML = output;
+// }, 1000)
+// }
 
-createPost({
-  title: "Post Three",
-  body: 'This is post three'
-},getPosts);
+// createPost({
+//   title: "Post Three",
+//   body: 'This is post three'
+// },getPosts);
 
 
 // No post three, SYNCHRONOUS
