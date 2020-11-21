@@ -1,3 +1,52 @@
+// Lesson 71 Async and Await
+// Second Example
+
+async function getUsers() {
+  //  await response of the fetch call
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+
+  // Only proceed once its resolved
+  const data = await response.json();
+
+  // Only proceed once second promise is resolved
+  return data;
+}
+
+getUsers().then(users => console.log(users));
+
+// First Example
+// ----------------------------------------
+// // with aync await, we add async in the beginning of the function
+
+// async function myFunc() {
+//   // return 'Hello';
+
+//   // await to wait untill the resolve
+//   const promise = new Promise((resolve, reject) => {
+//     setTimeout(() => resolve('Hello'), 1000);
+//   });
+
+//   const error = false;
+
+//   if(!error){
+//     const res = await promise;
+//     return res;
+//   } else {
+//     await Promise.reject(new Error('Something went wrong'));
+//   }
+
+//   // const res = await promise; // Wait untill promise is resolved which is 1second
+
+//   // return res;
+// }
+
+// // since it is now returning a promise
+// // we comment this => console.log(myFunc());
+
+// myFunc()
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err));
+
 // Lesson 69 Arrow Functions
 // const sayHello = () => {
 //   console.log('Hello');
@@ -54,61 +103,61 @@
 
 ///////////////////////////////////////////
 
-document.getElementById('button1').addEventListener('click', getText);
+// document.getElementById('button1').addEventListener('click', getText);
 
-document.getElementById('button2').addEventListener('click', getJson);
+// document.getElementById('button2').addEventListener('click', getJson);
 
-document.getElementById('button3').addEventListener('click', getExternal);
+// document.getElementById('button3').addEventListener('click', getExternal);
 
-// Get from exxternal API
+// // Get from exxternal API
 
-function getExternal() {
-  fetch('https://api.github.com/users')
-  .then(res => res.json())
-  .then(data => {
-    console.log(data); //in the file
-    let output = '';
-    data.forEach(function(user){
-      output += `<li>${user.login}</li>`;
-    });
+// function getExternal() {
+//   fetch('https://api.github.com/users')
+//   .then(res => res.json())
+//   .then(data => {
+//     console.log(data); //in the file
+//     let output = '';
+//     data.forEach(function(user){
+//       output += `<li>${user.login}</li>`;
+//     });
 
-    document.getElementById('output').innerHTML = output;
-  })
-  .catch(err => console.log(err));
+//     document.getElementById('output').innerHTML = output;
+//   })
+//   .catch(err => console.log(err));
 
-}
+// }
 
 
-// Get local json data
+// // Get local json data
 
-function getJson() {
-  fetch('posts.json')
-  .then(res => res.json())
-  .then(data => {
-    console.log(data); //in the file
-    let output = '';
-    data.forEach(function(post){
-      output += `<li>${post.title}</li>`;
-    });
+// function getJson() {
+//   fetch('posts.json')
+//   .then(res => res.json())
+//   .then(data => {
+//     console.log(data); //in the file
+//     let output = '';
+//     data.forEach(function(post){
+//       output += `<li>${post.title}</li>`;
+//     });
 
-    document.getElementById('output').innerHTML = output;
-  })
-  .catch(err => console.log(err));
+//     document.getElementById('output').innerHTML = output;
+//   })
+//   .catch(err => console.log(err));
 
-}
+// }
 
-// Get local text file data
+// // Get local text file data
 
-function getText() {
-  fetch('text.txt')
-  .then(res => res.text()) //the file
-  .then(data => {
-    console.log(data); //in the file
-    document.getElementById('output').innerHTML = data;
-  })
-  .catch(err => console.log(err));
+// function getText() {
+//   fetch('text.txt')
+//   .then(res => res.text()) //the file
+//   .then(data => {
+//     console.log(data); //in the file
+//     document.getElementById('output').innerHTML = data;
+//   })
+//   .catch(err => console.log(err));
 
-}
+// }
 
 
 
