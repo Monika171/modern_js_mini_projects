@@ -1,18 +1,63 @@
+// Lesson 82 Error Handling: Try, Catch
+const user = {email: 'jdoe@gmail.com'};
+
+try {
+  // Produce a ReferenceError
+  // myFunction();
+
+  // Produce a TypeError
+  // null.myFunction();
+
+  // Produce Syntax Error
+  // eval('Hello World');
+
+  // Produce a URIError
+  // decodeURIComponent('%');
+
+  if(!user.name) {
+    // throw 'User has no name';
+    // Also
+    throw new SyntaxError('User has no name');
+  }
+} catch(e) {
+  // console.log(e);
+  //  OR CUSTOM
+  // console.log('ow, something must have happened :(');
+  //  OR CUSTOM
+  // console.log(`${e.name}: ow, something must have happened :(`);
+
+  // console.log(e.message); //For only message part
+  // console.log(e.name); 
+  // console.log(e instanceof ReferenceError);
+  // console.log(e instanceof TypeError);
+
+  console.log(`User Error: ${e.message}`);
+} finally {
+  console.log('Finally runs regardless of result...');
+}
+// NO MATTER WHAT THE RESULT FINALLY WILL RUN
+
+
+// even if there is an error
+console.log('Program continues...');
+
+
+
 // Lesson 71 Async and Await
 // Second Example
 
-async function getUsers() {
-  //  await response of the fetch call
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+// async function getUsers() {
+//   //  await response of the fetch call
+//   const response = await fetch('https://jsonplaceholder.typicode.com/users');
 
-  // Only proceed once its resolved
-  const data = await response.json();
+//   // Only proceed once its resolved
+//   const data = await response.json();
 
-  // Only proceed once second promise is resolved
-  return data;
-}
+//   // Only proceed once second promise is resolved
+//   return data;
+// }
 
-getUsers().then(users => console.log(users));
+// getUsers().then(users => console.log(users));
 
 // First Example
 // ----------------------------------------
