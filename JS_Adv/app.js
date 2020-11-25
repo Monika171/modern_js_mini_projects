@@ -1,45 +1,159 @@
-// Lesson 82 Error Handling: Try, Catch
-const user = {email: 'jdoe@gmail.com'};
+// Lesson 84 and 85 Regular Expressions 2,3
+let re;
+//  Literal Characters
+re = /hello/;
+re = /hello/i;
 
-try {
-  // Produce a ReferenceError
-  // myFunction();
+// Metacharacter Symbols
+re = /^h/i; // Must start with
+re = /rld$/i; // Must ends with
+re = /^hello$/i; // Must begin and end with
+re = /h.llo/i; //Matches any ONE character
+re = /h*llo/i; // Matches any character 0 or more times
+re = /gre?a?y/i; // Optional character eg: e or a
+re = /gre?a?y\?/i; // Escape character, what if we actually want to include question mark
 
-  // Produce a TypeError
-  // null.myFunction();
+// Brackets [] - Character Sets
+re = /gr[ae]y/i; // Must be an a or e
+re = /[GF]ray/; // Must be an uppercase G or F
+re = /[^GF]ray/i; // Inside the bracket, ^ means, anythin but G or F
+re = /[A-Z]ray/; // Match any uppercase letter
+re = /[a-z]ray/; // Match any lowercase letter
+re = /[A-Za-z]ray/; // Match any case letter
+re = /[0-9]ray/; // Match any digit
+re = /[0-3]ray/; // Match digit, 0-3 only
+re = /[0-3][0-9]ray/; // Match digit, 0-3 only, 0-9 for next,only SAME using {} quantifiers
 
-  // Produce Syntax Error
-  // eval('Hello World');
+// Braces {} - Quantifiers
+re = /Hel{2}o/i; // L must occur 2 times here
+// Must occur exactly {m} amount of times
 
-  // Produce a URIError
-  // decodeURIComponent('%');
+re = /Hel{2,4}o/i; // Must occur exactly 2 to 4 amount of times
 
-  if(!user.name) {
-    // throw 'User has no name';
-    // Also
-    throw new SyntaxError('User has no name');
+re = /Hel{2,}o/i; // Must occur atleast {m} times
+
+// Parenthesis () - Grouping
+re = /^([0-9]x){3}$/; // eg:3x3x3x, ^,$-> to make sure it ends/exactly after three 3x
+
+// Shorthand Character Classes, do lookat console.log results
+re = /\w/; // Word character - alphanumeric or _
+// 3x3x3x3x gives 3
+re = /\w+/; // + => one or more
+// 3x3x3x3x gives 3x3x3x3x
+re = /\W/; // Non-Word characters
+re = /\d/; // Match any digit
+re = /\d+/; // Match any digit, 0 or more times
+re = /\D/; // Match any NON-digit
+re = /\s/; // Match whitespace char
+re = /\S/; // Match NON-whitespace char
+re = /Hell\b/i; // Word boundary, for exact word and not only inclusive
+
+// Assertions
+re = /x(?=y)/; // Match x only if followed by y
+re = /x(?!y)/; // Match x only if NOT followed by y
+
+
+// String to match
+// const str = 'Hello, welcome to Hell';
+const str = 'hjkhkkxakhgydaa'; // For assertions
+
+
+// Log Results
+const result = re.exec(str);
+console.log(result);
+
+function reTest(re, str) {
+  if(re.test(str)) {
+    console.log(`${str} matches ${re.source}`);
+  } else {
+    console.log(`${str} does NOT match ${re.source}`);
+
   }
-} catch(e) {
-  // console.log(e);
-  //  OR CUSTOM
-  // console.log('ow, something must have happened :(');
-  //  OR CUSTOM
-  // console.log(`${e.name}: ow, something must have happened :(`);
-
-  // console.log(e.message); //For only message part
-  // console.log(e.name); 
-  // console.log(e instanceof ReferenceError);
-  // console.log(e instanceof TypeError);
-
-  console.log(`User Error: ${e.message}`);
-} finally {
-  console.log('Finally runs regardless of result...');
 }
-// NO MATTER WHAT THE RESULT FINALLY WILL RUN
+
+reTest(re, str);
+
+// Lesson 83 Regular Expressions 1
+
+// let re;
+// re = /hello/i; // i = case insensitive
+// re = /hello/g; // g = Global search: All instances of hello
+
+// console.log(re);
+// console.log(re.source); //disregard the slashes
+
+// Some functions to evaluate expressions
+
+// exec() - Return result in an array or null
+// const result = re.exec('tina hello world'); // index no., not matched null
+
+// console.log(result);
+// console.log(result[0]);
+// console.log(result.index);
+// console.log(result.input);
+
+// test() - Returns true or false if there is a match
+// const result = re.test('Hello');
+// console.log(result);
+
+// match() - Return result array or null
+// const str = 'Hello There';
+// const result = str.match(re);
+// console.log(result);
+
+// search() - Returns index of the first match if not found returns -1
+// const str = 'liam Hello There';
+// const result = str.search(re);
+// console.log(result);
+
+// replace() - Return new string with some or all matches of a pattern
+// const str = 'Hello There';
+// const newStr = str.replace(re, 'HI');
+// console.log(newStr);
 
 
-// even if there is an error
-console.log('Program continues...');
+// Lesson 82 Error Handling: Try, Catch
+// const user = {email: 'jdoe@gmail.com'};
+
+// try {
+//   // Produce a ReferenceError
+//   // myFunction();
+
+//   // Produce a TypeError
+//   // null.myFunction();
+
+//   // Produce Syntax Error
+//   // eval('Hello World');
+
+//   // Produce a URIError
+//   // decodeURIComponent('%');
+
+//   if(!user.name) {
+//     // throw 'User has no name';
+//     // Also
+//     throw new SyntaxError('User has no name');
+//   }
+// } catch(e) {
+//   // console.log(e);
+//   //  OR CUSTOM
+//   // console.log('ow, something must have happened :(');
+//   //  OR CUSTOM
+//   // console.log(`${e.name}: ow, something must have happened :(`);
+
+//   // console.log(e.message); //For only message part
+//   // console.log(e.name); 
+//   // console.log(e instanceof ReferenceError);
+//   // console.log(e instanceof TypeError);
+
+//   console.log(`User Error: ${e.message}`);
+// } finally {
+//   console.log('Finally runs regardless of result...');
+// }
+// // NO MATTER WHAT THE RESULT FINALLY WILL RUN
+
+
+// // even if there is an error
+// console.log('Program continues...');
 
 
 
