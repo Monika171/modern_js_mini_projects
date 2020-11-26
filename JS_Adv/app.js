@@ -1,3 +1,34 @@
+// Lesson 91 Destructuring
+
+// let a,b;
+// [a, b] = [100, 200];
+// // Rest pattern, spread operator
+// // assigns remaining in rest
+// [a, b, c, ...rest] = [100, 200, 300, 400, 500];
+
+// ({ a, b} = {a: 100, b: 200, c: 300, d: 400, e: 500 });
+
+// ({ a, b, ...rest} = {a: 100, b: 200, c: 300, d: 400, e: 500 });
+
+// console.log(rest);
+
+// Array Destructuring
+// const people = ['John', 'Beth', 'Mike'];
+// const [person1, person2, person3] = people;
+// console.log(person1, person2, person3);
+
+// Parse array returned from a function
+// function getPeople() {
+//   return ['John', 'Beth', 'Mike'];
+// }
+// let person1, person2, person3;
+// [person1, person2, person3] = getPeople();
+// console.log(person1, person2, person3);
+
+// Object Destructuring
+
+
+
 // Lesson 90 Symbols
 
 // Create a symbol
