@@ -1,77 +1,140 @@
-// Lesson 84 and 85 Regular Expressions 2,3
-let re;
-//  Literal Characters
-re = /hello/;
-re = /hello/i;
+// Lesson 88 Iterators and Generators
 
-// Metacharacter Symbols
-re = /^h/i; // Must start with
-re = /rld$/i; // Must ends with
-re = /^hello$/i; // Must begin and end with
-re = /h.llo/i; //Matches any ONE character
-re = /h*llo/i; // Matches any character 0 or more times
-re = /gre?a?y/i; // Optional character eg: e or a
-re = /gre?a?y\?/i; // Escape character, what if we actually want to include question mark
-
-// Brackets [] - Character Sets
-re = /gr[ae]y/i; // Must be an a or e
-re = /[GF]ray/; // Must be an uppercase G or F
-re = /[^GF]ray/i; // Inside the bracket, ^ means, anythin but G or F
-re = /[A-Z]ray/; // Match any uppercase letter
-re = /[a-z]ray/; // Match any lowercase letter
-re = /[A-Za-z]ray/; // Match any case letter
-re = /[0-9]ray/; // Match any digit
-re = /[0-3]ray/; // Match digit, 0-3 only
-re = /[0-3][0-9]ray/; // Match digit, 0-3 only, 0-9 for next,only SAME using {} quantifiers
-
-// Braces {} - Quantifiers
-re = /Hel{2}o/i; // L must occur 2 times here
-// Must occur exactly {m} amount of times
-
-re = /Hel{2,4}o/i; // Must occur exactly 2 to 4 amount of times
-
-re = /Hel{2,}o/i; // Must occur atleast {m} times
-
-// Parenthesis () - Grouping
-re = /^([0-9]x){3}$/; // eg:3x3x3x, ^,$-> to make sure it ends/exactly after three 3x
-
-// Shorthand Character Classes, do lookat console.log results
-re = /\w/; // Word character - alphanumeric or _
-// 3x3x3x3x gives 3
-re = /\w+/; // + => one or more
-// 3x3x3x3x gives 3x3x3x3x
-re = /\W/; // Non-Word characters
-re = /\d/; // Match any digit
-re = /\d+/; // Match any digit, 0 or more times
-re = /\D/; // Match any NON-digit
-re = /\s/; // Match whitespace char
-re = /\S/; // Match NON-whitespace char
-re = /Hell\b/i; // Word boundary, for exact word and not only inclusive
-
-// Assertions
-re = /x(?=y)/; // Match x only if followed by y
-re = /x(?!y)/; // Match x only if NOT followed by y
+////////// Generator Example
 
 
-// String to match
-// const str = 'Hello, welcome to Hell';
-const str = 'hjkhkkxakhgydaa'; // For assertions
+// function nameIterator(names) {
+//   let nextIndex = 0;
+
+//   return {
+//     next: function() {
+//       return nextIndex < names.length ?
+//       { value: names[nextIndex++], done: false} :
+//       { done: true}
+//     }
+//   }
+// }
+
+// // Create an array of names
+// const namesArr = ['Jack', 'Jill', 'John'];
+// // Init iterator and pass in the names array
+// const names = nameIterator(namesArr);
+
+// console.log(names.next().value);
+// console.log(names.next().value);
+// console.log(names.next().value);
+// console.log(names.next());
+
+////////// Generator Example
+// asterisk * tells javascript, its a generator and not just a function
+
+// function* sayNames() {
+//   yield 'Jack';
+//   yield 'Jill';
+//   yield 'John';  
+// }
+
+// const name = sayNames();
+// console.log(name.next().value);
+// console.log(name.next().value);
+// console.log(name.next().value);
+// console.log(name.next().value);
+
+// ID Creator
+// function* createIds() {
+//   let index = 0;
+
+//   while(true) {
+//     yield index++;
+//   }
+// }
+
+// const gen = createIds();
+// console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
 
 
-// Log Results
-const result = re.exec(str);
-console.log(result);
+// Lesson 84 - 86 Regular Expressions 2-4
+// let re;
+// //  Literal Characters
+// re = /hello/;
+// re = /hello/i;
 
-function reTest(re, str) {
-  if(re.test(str)) {
-    console.log(`${str} matches ${re.source}`);
-  } else {
-    console.log(`${str} does NOT match ${re.source}`);
+// // Metacharacter Symbols
+// re = /^h/i; // Must start with
+// re = /rld$/i; // Must ends with
+// re = /^hello$/i; // Must begin and end with
+// re = /h.llo/i; //Matches any ONE character
+// re = /h*llo/i; // Matches any character 0 or more times
+// re = /gre?a?y/i; // Optional character eg: e or a
+// re = /gre?a?y\?/i; // Escape character, what if we actually want to include question mark
 
-  }
-}
+// // Brackets [] - Character Sets
+// re = /gr[ae]y/i; // Must be an a or e
+// re = /[GF]ray/; // Must be an uppercase G or F
+// re = /[^GF]ray/i; // Inside the bracket, ^ means, anythin but G or F
+// re = /[A-Z]ray/; // Match any uppercase letter
+// re = /[a-z]ray/; // Match any lowercase letter
+// re = /[A-Za-z]ray/; // Match any case letter
+// re = /[0-9]ray/; // Match any digit
+// re = /[0-3]ray/; // Match digit, 0-3 only
+// re = /[0-3][0-9]ray/; // Match digit, 0-3 only, 0-9 for next,only SAME using {} quantifiers
 
-reTest(re, str);
+// // Braces {} - Quantifiers
+// re = /Hel{2}o/i; // L must occur 2 times here
+// // Must occur exactly {m} amount of times
+
+// re = /Hel{2,4}o/i; // Must occur exactly 2 to 4 amount of times
+
+// re = /Hel{2,}o/i; // Must occur atleast {m} times
+
+// // Parenthesis () - Grouping
+// re = /^([0-9]x){3}$/; // eg:3x3x3x, ^,$-> to make sure it ends/exactly after three 3x
+
+// // Shorthand Character Classes, do lookat console.log results
+// re = /\w/; // Word character - alphanumeric or _
+// // 3x3x3x3x gives 3
+// re = /\w+/; // + => one or more
+// // 3x3x3x3x gives 3x3x3x3x
+// re = /\W/; // Non-Word characters
+// re = /\d/; // Match any digit
+// re = /\d+/; // Match any digit, 0 or more times
+// re = /\D/; // Match any NON-digit
+// re = /\s/; // Match whitespace char
+// re = /\S/; // Match NON-whitespace char
+// re = /Hell\b/i; // Word boundary, for exact word and not only inclusive
+
+// // Assertions
+// re = /x(?=y)/; // Match x only if followed by y
+// re = /x(?!y)/; // Match x only if NOT followed by y
+
+
+// // String to match
+// // const str = 'Hello, welcome to Hell';
+// const str = 'hjkhkkxakhgydaa'; // For assertions
+
+
+// // Log Results
+// const result = re.exec(str);
+// console.log(result);
+
+// function reTest(re, str) {
+//   if(re.test(str)) {
+//     console.log(`${str} matches ${re.source}`);
+//   } else {
+//     console.log(`${str} does NOT match ${re.source}`);
+
+//   }
+// }
+
+// reTest(re, str);
 
 // Lesson 83 Regular Expressions 1
 
